@@ -4,9 +4,9 @@ import json
 app = Flask(__name__)
 
 todo_db = {
-    "1": { 'name': 'laundry', 'status': 'to do'},
-    "2": { 'name': 'windows', 'status': 'to do'},
-    "3": { 'name': 'wash car', 'status': 'to do'}
+    "1": { 'task': 'laundry', 'progress': 'not started'},
+    "2": { 'task': 'windows', 'progress': 'not started'},
+    "3": { 'task': 'wash car', 'progress': 'not started'}
 }
 
 @app.route('/')
@@ -38,4 +38,4 @@ if __name__ == "__main__":
     app.run(host='127.0.0.1')
 
 #New To Do
-# { "todo" : { "name" : "to do", "status": "to do"}}
+# { "id" : { "task" : "to do", "progress": "to do"}}
