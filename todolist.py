@@ -1,13 +1,18 @@
 from flask import Flask, request, Response
+from flask_alchemy import SQLAlchemy
+from config import Config
 import json
 
-app = Flask(__name__)
+app = Flask(__name__, instance_relative_config=False)
+app.config.from_object(Config)
 
-todo_db = {
-    "1": { 'task': 'laundry', 'progress': 'not started'},
-    "2": { 'task': 'windows', 'progress': 'not started'},
-    "3": { 'task': 'wash car', 'progress': 'not started'}
-}
+db = SQLAlchemy(app)
+
+class Movies(db.Model)
+    id = db.Column('id', db.Integer, primary_key=True)
+    name = db.Column(db.VARCHAR(length=255))
+    release_year = db.Column(db.Integer)
+
 
 @app.route('/')
 def todo():
@@ -17,6 +22,8 @@ def todo():
 @app.route("/todo/<todo_id>")
 def get_todo(todo_id):
     return json.dumps(todo_db[todo_id])
+
+   # movies = Movies.query.all()
 
 #CREATE
 
