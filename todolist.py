@@ -8,7 +8,7 @@ app.config.from_object(Config)
 
 db = SQLAlchemy(app)
 
-class Movies(db.Model)
+class Movies(db.Model):
     id = db.Column('id', db.Integer, primary_key=True)
     name = db.Column(db.VARCHAR(length=255))
     release_year = db.Column(db.Integer)
